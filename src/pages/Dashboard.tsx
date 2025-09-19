@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin, Navigation, CheckCircle, AlertTriangle } from "lucide-react";
+import GoogleMap from "@/components/GoogleMap";
 
 interface Signal {
   id: string;
@@ -128,7 +129,13 @@ const Dashboard = () => {
         )}
 
         <div className="grid lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 space-y-6">
+            <GoogleMap 
+              signals={signals}
+              startLocation={tripData?.startLocation || ""}
+              destination={tripData?.destination || ""}
+            />
+            
             <Card>
               <CardHeader>
                 <CardTitle>Traffic Signal Control</CardTitle>
